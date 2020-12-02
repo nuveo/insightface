@@ -207,7 +207,7 @@ class FaceDetector:
     def __init__(self, param_file, rac):
         self.param_file = param_file
         self.rac = rac
-        self.default_image_size = (480, 640)
+        self.default_image_size = (768, 768)
 
     def prepare(self, ctx_id, nms=0.4, fix_image_size=None):
         pos = self.param_file.rfind('-')
