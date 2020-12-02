@@ -25,13 +25,13 @@ class FaceAnalysis:
                  rec_name='arcface_r100_v1',
                  ga_name='genderage_v1'):
         assert det_name is not None
-        self.det_model = model_zoo.get_model(det_name)
+        self.det_model = model_zoo.get_model(det_name, root=models_root)
         if rec_name is not None:
-            self.rec_model = model_zoo.get_model(rec_name)
+            self.rec_model = model_zoo.get_model(rec_name, root=models_root)
         else:
             self.rec_model = None
         if ga_name is not None:
-            self.ga_model = model_zoo.get_model(ga_name)
+            self.ga_model = model_zoo.get_model(ga_name, root=models_root)
         else:
             self.ga_model = None
 
