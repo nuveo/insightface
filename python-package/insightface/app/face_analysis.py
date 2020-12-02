@@ -4,6 +4,7 @@ import mxnet as mx
 import numpy as np
 from numpy.linalg import norm
 import mxnet.ndarray as nd
+from insightface import ROOT_MODELS
 from ..model_zoo import model_zoo
 from ..utils import face_align
 
@@ -19,6 +20,7 @@ Face.__new__.__defaults__ = (None, ) * len(Face._fields)
 
 class FaceAnalysis:
     def __init__(self,
+                 models_root=ROOT_MODELS,
                  det_name='retinaface_r50_v1',
                  rec_name='arcface_r100_v1',
                  ga_name='genderage_v1'):

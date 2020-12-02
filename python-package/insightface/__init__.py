@@ -2,7 +2,7 @@
 # pylint: disable=wrong-import-position
 """InsightFace: A Face Analysis Toolkit."""
 from __future__ import absolute_import
-
+import os
 # mxnet version check
 #mx_version = '1.4.0'
 try:
@@ -22,6 +22,8 @@ except ImportError:
     )
 
 __version__ = '0.1.5'
+
+ROOT_MODELS = os.environ.get('DVC_ROOT_MODELS', '~/.insightface/models')
 
 from . import model_zoo
 from . import utils
