@@ -82,11 +82,11 @@ class FaceAnalysis:
                 gender, age = self.ga_model.get(_img)
             face = Face(bbox=bbox,
                         landmark=landmark,
-                        det_score=det_score,
+                        det_score=det_score.item(),
                         embedding=embedding,
-                        gender=gender,
-                        age=age,
+                        gender=gender.item(),
+                        age=age.item(),
                         normed_embedding=normed_embedding,
                         embedding_norm=embedding_norm)
-            ret.append(face)
+            ret.append(face._asdict())
         return ret
