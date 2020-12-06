@@ -86,7 +86,7 @@ class FaceAnalysis:
                         embedding=embedding,
                         gender=gender.item(),
                         age=age,
-                        normed_embedding=normed_embedding.item(),
-                        embedding_norm=embedding_norm)
+                        normed_embedding=normed_embedding,
+                        embedding_norm=embedding_norm.item())
             ret.append(face._asdict())
         return ret
