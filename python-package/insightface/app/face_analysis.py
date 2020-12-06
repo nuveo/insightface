@@ -85,7 +85,7 @@ class FaceAnalysis:
                         det_score=det_score.item(),
                         embedding=embedding,
                         gender=gender.item(),
-                        age=age.item(),
+                        age=age,
                         normed_embedding=normed_embedding,
                         embedding_norm=embedding_norm)
             ret.append(face._asdict())
