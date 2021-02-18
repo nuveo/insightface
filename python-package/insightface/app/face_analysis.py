@@ -23,7 +23,9 @@ class FaceAnalysis:
                  models_root=ROOT_MODELS,
                  det_name='retinaface_r50_v1',
                  rec_name='arcface_r100_v1',
-                 ga_name='genderage_v1'):
+                 ga_name='genderage_v1',
+                 max_detection_dim=768):
+        self._max_detection_dim = max_detection_dim
         assert det_name is not None
         self.det_model = model_zoo.get_model(det_name, root=models_root)
         if rec_name is not None:
@@ -42,7 +44,13 @@ class FaceAnalysis:
         if self.ga_model is not None:
             self.ga_model.prepare(ctx_id)
 
-    def get(self, img, det_thresh=0.8, det_scale=1.0, max_num=0):
+    def get(self, img, det_thresh=0.8, max_num=0):
+        major_dim = max(img.shape[:2])
+        det_scale = 1.0
+
+        if major_dim > self._max_detection_dim:
+            det_scale = self._max_detection_dim/major_dim
+
         bboxes, landmarks = self.det_model.detect(img,
                                                   threshold=det_thresh,
                                                   scale=det_scale)
